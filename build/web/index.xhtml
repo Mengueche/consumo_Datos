@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+       <h:form id="dardatos">
+            <center>
+                Cedula <br></br><p:inputText id="Cedula" value="#{beanmostrar.cedula}"></p:inputText>
+                <br></br>
+                <p:outputLabel  value="Periodo Lectivo:" /><br></br>
+                
+                <p:selectOneButton value="#{beanmostrar.lectivo}">
+            <f:selectItem itemLabel="2013 - 2014 CI" itemValue="15120001" />
+            <f:selectItem itemLabel="2013 - 2014 CII" itemValue="15120002" />
+            
+        </p:selectOneButton>
+       
+       
+                <br></br><br></br> 
+                <p:commandButton value="Consultar" actionListener="#{beanmostrar.Mostrar()}"
+                                 update=":formDatos"></p:commandButton>
+            </center>
+            <p:separator />
+        </h:form>
+        
+        
+        
+        <h:form id="formDatos">
+            <center>
+            Nombre y Apellido<br></br> <p:outputLabel value="#{beanmostrar.alum}"></p:outputLabel><br></br>
+            Carrera<br></br> <p:outputLabel value="#{beanmostrar.carrera}"></p:outputLabel></center>
+            <p:separator />
+            <p:dataTable id="estudiante" var="cli" value="#{beanmostrar.notas}"
+                         rows="10" style="margin-bottom: 20px; font-size: x-small">
+        
+                <p:column headerText="Materia" style="width: 10px; text-aligin: center" >
+             <h:outputText value="#{cli.nom_materia}"></h:outputText>
+        </p:column>
+                <p:column headerText="Nota academica I" style="width: 10px; text-aligin: center" >
+                    <h:outputText value="#{cli.primer_academica}"></h:outputText>
+        </p:column>
+                <p:column headerText="Nota evaluacion I" style="width: 10px; text-aligin: center" >
+                    <h:outputText value="#{cli.primer_evaluacion}"></h:outputText>
+        </p:column>
+                <p:column headerText="Promedio I" style="width: 10px; text-aligin: center">
+                    <h:outputText value="#{cli.primer_promedio}"></h:outputText>
+        </p:column>
+                <p:column headerText="Nota academica II" style="width: 10px; text-aligin: center" >
+                    <h:outputText value="#{cli.segundo_academica}"></h:outputText>
+        </p:column>
+                
+                <p:column headerText="Evaluacion II" style="width: 10px; text-aligin: center">
+                    <h:outputText value="#{cli.segundo_evaluacion}"></h:outputText>
+        </p:column>
+                <p:column headerText="Promedio II" style="width: 10px; text-aligin: center">
+                    <h:outputText value="#{cli.segundo_promedio}"></h:outputText>
+                    </p:column>
+                <p:column headerText="Promedio Final" style="width: 10px; text-aligin: center">
+                    <h:outputText value="#{cli.promedio}"></h:outputText>
+                    </p:column>
+        </p:dataTable>
+            <center><p:outputLabel value="Integrantes"></p:outputLabel><br></br>
+            <p:outputLabel value=" Erick Avelino---Danny Avila---Luis Moreira---Hilda Silva"></p:outputLabel></center>
+        </h:form>
+        <body background="images/ug.jpg"></body>
+    </h:body>
+</html>
+
